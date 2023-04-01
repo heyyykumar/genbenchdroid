@@ -1,14 +1,15 @@
 {
     "type": "BRIDGE",
+    "pattern": "OUT",
     "imports": [],
     "globals": [
         "{{ globals }}"
     ],
     "module": [
         "String[] §array$ = new String[10];",
-        "§array$[5] = sensitiveData;",
+        "§array$[5] = sensitiveData_€;",
         "§array$[4] = \"unsensitive data\";",
-        "sensitiveData = §array$[5];",
+        "String sensitiveData_₹ = §array$[5];",
         "{{ module }}"
     ],
     "methods": [

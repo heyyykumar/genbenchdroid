@@ -1,0 +1,42 @@
+{
+    "type": "BRIDGE",
+    "pattern": "OUT",
+    "imports": [
+        "import java.util.LinkedList;"
+    ],
+    "globals": [
+    ],
+    "module": [
+        "LinkedList<String> §list$ = new LinkedList<String>();",
+        "§list$.add(sensitiveData_€);",
+        "",
+        "String sensitiveData_₹ = §list$.get(0);",
+        "{{ module }}",
+        "{{ module }}"
+    ],
+    "methods": ["{{ methods }}",
+        "{{ methods }}"
+    ],
+    "classes": [
+        "{{ classes }}"
+    ],
+    "permissions": [],
+    "components": [],
+    "views": [],
+    "flows": [
+        {
+            "className": "",
+            "methodSignature": "",
+            "statementSignature": "",
+            "leaking": true,
+            "reachable": true
+        },
+        {
+            "className": "",
+            "methodSignature": "",
+            "statementSignature": "",
+            "leaking": true,
+            "reachable": true
+        }
+    ]
+}

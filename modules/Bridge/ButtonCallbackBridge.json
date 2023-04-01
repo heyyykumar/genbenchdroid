@@ -1,5 +1,6 @@
 {
     "type": "BRIDGE",
+    "pattern": "IN",
     "imports": [
         "import android.view.View;"
     ],
@@ -9,13 +10,20 @@
         "{{ globals }}"
     ],
     "module": [
-        "§imei$ = sensitiveData;",
-        "§buttonEnabled$ = true;"
+        "§imei$ = sensitiveData_€;",
+        "§buttonEnabled$ = true;",
+        "View §view$ = findViewById(R.id.§button$);",
+        "§view$.setOnClickListener(new View.OnClickListener() {",
+        "   @Override",
+        "   public void onClick(View v) {",
+        "       §sendMessage$();",
+        "   }",
+        "});"
     ],
     "methods": [
-        "public void §sendMessage$(View §view$){",
+        "public void §sendMessage$(){",
             "if (§buttonEnabled$){",
-                "String sensitiveData = §imei$;",
+                "String sensitiveData_€ = §imei$;",
                 "{{ module }}",
             "}",
         "}",

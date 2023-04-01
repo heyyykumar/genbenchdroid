@@ -1,5 +1,6 @@
 {
     "type": "BRIDGE",
+    "pattern": "IN",
     "imports": [],
     "globals": [
         "{{ globals }}"

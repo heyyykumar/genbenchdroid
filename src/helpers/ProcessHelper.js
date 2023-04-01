@@ -1,8 +1,9 @@
 const { spawn } = require('child_process');
 const { resolve } = require('path');
 const ConfigHandler = require('../components/ConfigHandler');
-
+const Console = require("console");
 const runGradle = (successCallback) => {
+    Console.time("Application compilation took");
     const jdkDir = new ConfigHandler().get('jdkDir');
     const gradle = spawn(process.platform === 'win32' ? 'gradlew.bat' : './gradlew', ['assembleDebug', `-Dorg.gradle.java.home=${jdkDir}`, '-q'], { cwd: 'generated' });
 
@@ -13,6 +14,7 @@ const runGradle = (successCallback) => {
     // finished handler
     gradle.on('close', code => {
         if (code === 0) {
+            Console.timeEnd("Application compilation took");
             console.log('\x1b[33m%s\x1b[0m', 'Compilation process has been successfull');
             successCallback();
         } else {

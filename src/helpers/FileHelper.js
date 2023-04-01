@@ -79,6 +79,14 @@ const _readDirRecursively = (dir, files = {}) => {
     return files;
 };
 
+// checks if the direcotry (dir) exists
+const _directoryExists = (dir) => {
+    if (fs.existsSync(dir)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 module.exports = {
     cleanup,
     writeFileWithContent,
@@ -86,5 +94,6 @@ module.exports = {
     hashFile,
     checkForFilenameDuplicates,
     readJson,
-    loadFileUsingGlob
+    loadFileUsingGlob,
+    _directoryExists
 };

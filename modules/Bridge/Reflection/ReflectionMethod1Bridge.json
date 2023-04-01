@@ -1,5 +1,6 @@
 {
     "type": "BRIDGE",
+    "pattern": "IN",
     "imports": [
         "import java.lang.reflect.Method;"
     ],
@@ -8,16 +9,16 @@
     ],
     "module": [
         "try {",
-        "  Method §method$ = Class.forName(this.getClass().getName()).getDeclaredMethod(\"reflectiveId\", String.class);",
-        "  sensitiveData = (String) §method$.invoke(this, sensitiveData);",
+        "  Method §method$ = Class.forName(this.getClass().getName()).getDeclaredMethod(\"§reflectiveId$\", String.class);",
+        "  sensitiveData_€ = (String) §method$.invoke(this, sensitiveData_€ );",
         "} catch (Exception §e$) {",
-        "  sensitiveData = \"sanitized\";",
+        "  sensitiveData_€ = \"sanitized\";",
         "  §e$.printStackTrace();",
         "}",
         "{{ module }}"
     ],
     "methods": [
-        "private String reflectiveId(String input) {",
+        "private String §reflectiveId$(String input) {",
         "  return input;",
         "}",
         "{{ methods }}"

@@ -1,20 +1,24 @@
-const hb = require('handlebars');
 const formatJS = require('js-beautify').js;
 const formatXML = require('xml-formatter');
 const ConfigHandler = require('./ConfigHandler');
+const nunjucks = require('nunjucks');
 
 class TemplateEngine {
     templateString;
     manifestTemplateString;
     layoutTemplateString;
     classes = [];
-    
+    env =  nunjucks.configure({
+        autoescape: false,
+        watch: false,
+        noCache: true
+    });
     constructor(template) {
         this.templateString = template.template;
         this.layoutTemplateString = template.layout;
         const manifestTemplate = template.manifest;
         
-        const manifestTemplateScript = hb.compile(manifestTemplate, { noEscape: true });
+        const manifestTemplateScript = nunjucks.compile(manifestTemplate, this.env);
 
         const projectName = new ConfigHandler().get('projectName');
         const initialModule = {
@@ -22,19 +26,26 @@ class TemplateEngine {
             permissions: '{{ permissions }}',
             components: '{{ components }}'
         };
-        this.manifestTemplateString = manifestTemplateScript(initialModule);
+        this.manifestTemplateString = manifestTemplateScript.render(initialModule);
     }
 
-    insertModule(module) {
-        const templateOptions = { noEscape: true };
-        const templateScript = hb.compile(this.templateString, templateOptions);
-        this.templateString = templateScript(module);
-
-        const manifestTemplateScript = hb.compile(this.manifestTemplateString, templateOptions);
-        this.manifestTemplateString = manifestTemplateScript(module);
-
-        const layoutTemplateScript = hb.compile(this.layoutTemplateString, templateOptions);
-        this.layoutTemplateString = layoutTemplateScript(module);
+     async insertModuletemplateScript(templateScriptModule){
+        let templateScript = nunjucks.compile(this.templateString, this.env);
+        this.templateString = templateScript.render(templateScriptModule);
+         // clean compiled template after use
+        templateScript=null;
+    }
+     async insertModulemanifestTemplateScript(manifestTemplateScriptModule){
+        let manifestTemplateScript = nunjucks.compile(this.manifestTemplateString, this.env);
+        this.manifestTemplateString = manifestTemplateScript.render(manifestTemplateScriptModule);
+        // clean compiled template after use
+        manifestTemplateScript=null;
+    }
+    async insertModulelayoutTemplateScript(layoutTemplateScriptModule){
+        let layoutTemplateScript = nunjucks.compile(this.layoutTemplateString, this.env);
+        this.layoutTemplateString = layoutTemplateScript.render(layoutTemplateScriptModule);
+        // clean compiled template after use
+        layoutTemplateScript=null;
     }
 
     finishSourceGeneration() {
@@ -88,7 +99,7 @@ class TemplateEngine {
             max_preserve_newlines: 2 
         });
         this.manifestTemplateString = formatXML(this.manifestTemplateString);
-        this.layoutemplateString = formatXML(this.layoutTemplateString);
+        this.layoutTemplateString = formatXML(this.layoutTemplateString);
     }
 
     _splitClasses() {

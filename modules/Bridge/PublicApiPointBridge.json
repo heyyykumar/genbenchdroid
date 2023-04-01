@@ -1,5 +1,6 @@
 {
     "type": "BRIDGE",
+    "pattern": "OUT",
     "imports": [
         "import android.graphics.PointF;"
     ],
@@ -7,10 +8,10 @@
         "{{ globals }}"
     ],
     "module": [
-        "float §fx$ = Float.valueOf(sensitiveData.substring(0, 8));",
-        "float §fy$ = Float.valueOf(sensitiveData.substring(8));",
+        "float §fx$ = Float.valueOf(sensitiveData_€.substring(0, 8));",
+        "float §fy$ = Float.valueOf(sensitiveData_€.substring(8));",
         "PointF §point$ = new PointF(§fx$, §fy$);",
-        "sensitiveData = §point$.x + \"\" + §point$.y;",
+        "String sensitiveData_₹ = §point$.x + \"\" + §point$.y;",
         "{{ module }}"
     ],
     "methods": [

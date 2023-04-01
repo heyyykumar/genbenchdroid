@@ -1,11 +1,12 @@
 {
     "type": "BRIDGE",
+    "pattern": "IN",
     "imports": [],
     "globals": [
         "{{ globals }}"
     ],
     "module": [
-        "sensitiveData = \"clear\";",
+        "sensitiveData_€ = \"clear\";",
         "{{ module }}",
         ""
     ],

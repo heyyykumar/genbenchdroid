@@ -1,5 +1,6 @@
 {
     "type": "BRIDGE",
+    "pattern": "OUT",
     "imports": [],
     "globals": [
         "public static String[] §arrayData$;",
@@ -8,9 +9,9 @@
     "module": [
         "§arrayData$ = new String[3];",
         "§arrayData$[0] = \"element 1 is tainted\";",
-        "§arrayData$[1] = sensitiveData;",
+        "§arrayData$[1] = sensitiveData_€;",
         "§arrayData$[2] = \"neutral text\";",
-        "sensitiveData = §arrayData$[2];",
+        "String sensitiveData_₹ = §arrayData$[2];",
         "{{ module }}"
     ],
     "methods": [

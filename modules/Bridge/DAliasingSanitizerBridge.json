@@ -1,0 +1,49 @@
+{
+    "type": "BRIDGE",
+    "pattern": "OUT",
+    "imports": [],
+    "globals": [
+        "private §A$ §b$ = new §A$();",
+        "{{ globals }}",
+        "{{ globals }}"
+    ],
+    "module": [
+        "§A$ §a$ = new §A$();",
+        "§a$.§b$ = sensitiveData_€;",
+        "String sensitiveData_₹ = §b$.§b$;",
+        "{{ module }}",
+        "§b$ = §a$;",
+        "{{ module }}"
+    ],
+    "methods": [
+        "{{ methods }}",
+        "{{ methods }}"
+    ],
+    "classes": [
+        "class §A$ {",
+        "\tpublic String §b$ = \"Y\";",
+        "} ",
+        "",
+        "{{ classes }}",
+        "{{ classes }}"
+    ],
+    "permissions": [],
+    "components": [],
+    "views": [],
+    "flows": [
+        {
+            "className": "",
+            "methodSignature": "",
+            "statementSignature": "",
+            "leaking": false,
+	        "reachable": true
+        },
+        {
+            "className": "",
+            "methodSignature": "",
+            "statementSignature": "",
+            "leaking": true,
+            "reachable": true
+        }
+    ]
+}

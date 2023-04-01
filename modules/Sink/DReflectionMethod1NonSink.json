@@ -1,0 +1,52 @@
+{
+    "type": "SINK",
+    "pattern": "IN",
+    "imports": [
+        "import java.lang.reflect.Method;"
+    ],
+    "globals": [
+        "{{ globals }}",
+        "{{ globals }}"
+    ],
+    "module": [
+        "try {",
+        "  Method §method$ = Class.forName(this.getClass().getName()).getDeclaredMethod(\"reflectiveNotLeaking\", String.class);",
+        "  sensitiveData_€ = (String) §method$.invoke(this, sensitiveData_€);",
+        "} catch (Exception §e$) {",
+        "  sensitiveData_€ = \"sanitized\";",
+        "  §e$.printStackTrace();",
+        "}",
+        "{{ module }}",
+        "{{ module }}"
+    ],
+    "methods": [
+        "private String reflectiveNotLeaking(String input) {",
+        "  return \"sanitized\";",
+        "}",
+        "{{ methods }}",
+        "{{ methods }}"
+    ],
+    "classes": [
+        "{{ classes }}",
+        "{{ classes }}"
+    ],
+    "permissions": [],
+    "components": [],
+    "views": [],
+    "flows": [
+        {
+            "className": "",
+            "methodSignature": "",
+            "statementSignature": "java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])",
+            "leaking": false,
+            "reachable": true
+        },
+        {
+            "className": "",
+            "methodSignature": "",
+            "statementSignature": "",
+            "leaking": true,
+            "reachable": true
+        }
+    ]
+}

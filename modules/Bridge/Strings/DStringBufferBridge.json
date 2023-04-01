@@ -1,0 +1,42 @@
+{
+    "type": "BRIDGE",
+    "pattern": "OUT",
+    "imports": [],
+    "globals": [
+        "{{ globals }}",
+        "{{ globals }}"
+    ],
+    "module": [
+        "String §leak$ = new StringBuffer().append(sensitiveData_€).toString();",
+        "String sensitiveData_₹ = §leak$;",
+        "{{ module }}",
+        "{{ module }}"
+    ],
+    "methods": [
+        "{{ methods }}",
+        "{{ methods }}"
+    ],
+    "classes": [
+        "{{ classes }}",
+        "{{ classes }}"
+    ],
+    "permissions": [],
+    "components": [],
+    "views": [],
+    "flows": [
+        {
+            "className": "",
+            "methodSignature": "",
+            "statementSignature": "",
+            "leaking": true,
+            "reachable": true
+        },
+        {
+            "className": "",
+            "methodSignature": "",
+            "statementSignature": "",
+            "leaking": true,
+            "reachable": true
+        }
+    ]
+}

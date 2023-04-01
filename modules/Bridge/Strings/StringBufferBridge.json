@@ -1,13 +1,13 @@
 {
     "type": "BRIDGE",
+    "pattern": "OUT",
     "imports": [],
     "globals": [
         "{{ globals }}"
     ],
     "module": [
-        "String §leak$ = new StringBuffer().append(sensitiveData).toString();",
-        "sensitiveData = \"\";",
-        "sensitiveData = §leak$;",
+        "String §leak$ = new StringBuffer().append(sensitiveData_€).toString();",
+        "String sensitiveData_₹ = §leak$;",
         "{{ module }}"
     ],
     "methods": [

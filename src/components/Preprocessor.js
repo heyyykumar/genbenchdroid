@@ -1,11 +1,9 @@
 const { escapeRegExp } = require('../helpers/RegexHelper');
 const { concatIfNotNull } = require('../helpers/ArrayHelper');
-const { genRandomString } = require('../helpers/StringHelper');
 const ConfigHandler = require('./ConfigHandler');
-
+const md5=require("md5");
 class Preprocessor {
     identifierCount = 0;
-    identifierLookup = {};
     multiFlowIdentifier = {
         module: 0,
         methods: 0,
@@ -14,10 +12,9 @@ class Preprocessor {
     moduleCount = 0;
     addedData = { imports: [], permissions: [] };
     moduleIdentifiers = [];
-    moduleTree = null;
-    sensitiveDataIdentifier = genRandomString(16);
 
-    preprocessTemplate(template, unobfuscated = false) {
+    preprocessTemplate(template) {
+
         let processedTemplate = {
             ...template,
             template: this._joinCodeSnippet(template.template),
@@ -25,14 +22,10 @@ class Preprocessor {
             layout: this._joinCodeSnippet(template.layout)
         };
 
-        if (!unobfuscated) {
-            processedTemplate = this._obfuscateSensitiveDataIdentifier(processedTemplate);
-        }
-
         return processedTemplate;
     }
 
-    preprocessModule(module, parentId, childId, id, unobfuscated) {
+    preprocessModule(module, parentId, childId, id) {
 
         let processedModule = { 
             ...module, 
@@ -53,11 +46,6 @@ class Preprocessor {
         // add comment to later identify linenubmer of statement
         processedModule = this._attachModuleId(processedModule);
 
-        // obfuscate sensitive data variable
-        if (!unobfuscated) {
-            processedModule = this._obfuscateSensitiveDataIdentifier(processedModule);
-        }
-
         // give identifiers numbers after the name so that there are no multiple identifier usages
         processedModule = this._handleIdentifiers(processedModule);
 
@@ -76,11 +64,6 @@ class Preprocessor {
         
         // retain {{ module }} placeholders that have not been inserted yet
         processedModule = this._retainPlaceholders(processedModule);
-
-        
-        for (let i = 0; i <= this.multiFlowIdentifier.module; i++) {
-            this.moduleIdentifiers.push(`${processedModule.id}${i}`);
-        }
 
         this.multiFlowIdentifier.module = 0;
         this.multiFlowIdentifier.methods = 0;
@@ -121,11 +104,27 @@ class Preprocessor {
 
     _obfuscateSensitiveDataIdentifier(module) {
         const refinedModule = { ...module };
-        const sensitiveDataRegex = /(sensitiveData)\s*([\s+|\+|\-|\/|\*|\.|\(|\[|\{|\;|\,|\&|\||^|\=|\)|\]|\}|\>|\<|\:])/gm;
-        
+        const sensitiveDataRegex = /(sensitiveData)\d*(_)\d*/gm;
+
+        const findUniqueMatches = (string) => {
+            const matchArray = string.match(sensitiveDataRegex) || [];
+            const uniqueMatches = [...new Set(matchArray)];
+
+            return uniqueMatches.reduce((acc, match) => {
+                acc[match] = (acc[match] || 0) + 1;
+                return acc;
+            }, {});
+        };
+
+
+
         for (const key of Object.keys(refinedModule)) {
             if (typeof refinedModule[key] === 'string') {
-                refinedModule[key] = refinedModule[key].replace(sensitiveDataRegex, this.sensitiveDataIdentifier + '$2');
+                let uniqueMatches = findUniqueMatches(refinedModule[key]);
+                for(const uniqueKey of Object.keys(uniqueMatches)){
+                    refinedModule[key] = refinedModule[key].split(uniqueKey).join('a'+md5(uniqueKey));
+
+                }
             }
         }
 
@@ -254,6 +253,12 @@ class Preprocessor {
                 }
             });
         });
+
+        // remove already included placeholders from tracked set
+        const index = this.moduleIdentifiers.indexOf(`${module.parentId}${module.childId}`);
+        if (index !== -1) {
+            this.moduleIdentifiers.splice(index, 1);
+        }
 
         return refinedModule;
     }

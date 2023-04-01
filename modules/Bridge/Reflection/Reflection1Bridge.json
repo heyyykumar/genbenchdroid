@@ -1,17 +1,17 @@
 {
     "type": "BRIDGE",
+    "pattern": "OUT",
     "imports": [],
     "globals": [
         "{{ globals }}"
     ],
     "module": [
         "try {",
-        "  String §dataStorage$ = sensitiveData;",
-        "  sensitiveData = \"clear\";",
+        "  String §dataStorage$ = sensitiveData_€;",
         "  §BaseClass$ §bc$ = (§BaseClass$) Class.forName(\"{{ project }}.§ConcreteClass$\").newInstance();",
         "  §bc$.data = §dataStorage$;",
         "  ",
-        "  sensitiveData = §bc$.data;",
+        "  String sensitiveData_₹ = §bc$.data;",
         "  {{ module }}",
         "} catch (Exception §e$) {",
         "  §e$.printStackTrace();",

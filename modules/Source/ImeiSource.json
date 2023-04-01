@@ -1,5 +1,6 @@
 {
     "type": "SOURCE",
+    "pattern": "OUT",
     "imports": [
         "import android.telephony.TelephonyManager;"
     ],
@@ -7,8 +8,8 @@
         "{{ globals }}"
     ],
     "module": [
-        "TelephonyManager §tm$ = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);",
-        "sensitiveData = §tm$.getDeviceId();",
+        "TelephonyManager §tm$ = (TelephonyManager) context.getSystemService(context.TELEPHONY_SERVICE);",
+        "String sensitiveData_₹ = §tm$.getDeviceId();",
         "{{ module }}"
     ],
     "methods": [

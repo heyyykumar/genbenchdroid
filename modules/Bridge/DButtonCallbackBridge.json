@@ -1,0 +1,65 @@
+{
+    "type": "BRIDGE",
+    "pattern": "IN",
+    "imports": [
+        "import android.view.View;"
+    ],
+    "globals": [
+        "private static String §imei$ = null;",
+        "private static boolean §buttonEnabled$ = false;",
+        "{{ globals }}",
+        "{{ globals }}"
+    ],
+    "module": [
+        "§imei$ = sensitiveData_€;",
+        "§buttonEnabled$ = true;",
+        "{{ module }}"
+    ],
+    "methods": [
+        "public void §sendMessage$(View §view$){",
+            "if (§buttonEnabled$){",
+                "String sensitiveData_€ = §imei$;",
+                "{{ module }}",
+            "}",
+        "}",
+        "{{ methods }}",
+        "{{ methods }}"
+    ],
+    "classes": [
+        "{{ classes }}",
+        "{{ classes }}"
+    ],
+    "permissions": [
+
+    ],
+    "components": [
+        
+    ],
+    "views": [
+        "<Button",
+        "android:id=\"@+id/§button$\"",
+        "android:layout_width=\"wrap_content\"",
+        "android:layout_height=\"wrap_content\"",
+        "android:layout_alignParentTop=\"true\"",
+        "android:layout_centerHorizontal=\"true\"",
+        "android:layout_marginTop=\"185dp\"",
+        "android:text=\"click me\"",
+        "android:onClick=\"§sendMessage$\"/>"
+    ],
+    "flows": [
+        {
+            "className": "",
+            "methodSignature": "void §sendMessage$(android.view.View)",
+            "statementSignature": "",
+            "leaking": true,
+	        "reachable": true
+        },
+        {
+            "className": "",
+            "methodSignature": "",
+            "statementSignature": "",
+            "leaking": true,
+            "reachable": true
+        }
+    ]
+}

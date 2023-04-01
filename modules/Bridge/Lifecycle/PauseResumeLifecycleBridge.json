@@ -1,9 +1,10 @@
 {
     "type": "BRIDGE",
+    "pattern": "OUT",
     "imports": [],
     "globals": [],
     "module": [
-        "§NextActivity$.§data$ = sensitiveData;"
+        "§NextActivity$.§data$ = sensitiveData_€;"
     ],
     "methods": [],
     "classes": [
@@ -21,7 +22,7 @@
         "",
         "\tpublic void onPause(){",
         "\t\tsuper.onPause();",
-        "\t\tString sensitiveData = §data2$;",
+        "\t\tString sensitiveData_₹ = §data2$;",
         "\t\t{{ module }} ",
         "\t}",
         "",

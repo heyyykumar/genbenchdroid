@@ -1,5 +1,6 @@
 {
     "type": "BRIDGE",
+    "pattern": "OUT",
     "imports": [],
     "globals": [
         "{{ globals }}"
@@ -7,9 +8,8 @@
     "module": [
         "StringBuilder §strBuilder$ = new StringBuilder();",
         "§strBuilder$.append(\"text\");",
-        "§strBuilder$.append(sensitiveData);",
-        "sensitiveData = \"clear\";",
-        "sensitiveData = §strBuilder$.toString();",
+        "§strBuilder$.append(sensitiveData_€);",
+        "String sensitiveData_₹ = §strBuilder$.toString();",
         "{{ module }}"
     ],
     "methods": [

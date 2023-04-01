@@ -1,0 +1,43 @@
+{
+    "type": "SINK",
+    "pattern": "IN",
+    "imports": [
+        "import android.util.Log;"
+    ],
+    "globals": [
+        "{{ globals }}",
+        "{{ globals }}"
+    ],
+    "module": [
+        "Log.i(\"INFO\", sensitiveData_€);",
+        "{{ module }}",
+        "{{ module }}"
+    ],
+    "methods": [
+        "{{ methods }}",
+        "{{ methods }}"
+    ],
+    "classes": [
+        "{{ classes }}",
+        "{{ classes }}"
+    ],
+    "permissions": [],
+    "components": [],
+    "views": [],
+    "flows": [
+        {
+            "className": "",
+            "methodSignature": "",
+            "statementSignature": "android.util.Log: int i(java.lang.String,java.lang.String)",
+            "leaking": true,
+	        "reachable": true
+        },
+        {
+            "className": "",
+            "methodSignature": "",
+            "statementSignature": "",
+            "leaking": true,
+            "reachable": true
+        }
+    ]
+}

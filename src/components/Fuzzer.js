@@ -1,5 +1,4 @@
 const { Parser, Grammar } = require('nearley');
-const Unparse = require('nearley/lib/unparse');
 const ConfigError = require('./Errors/ConfigError');
 
 class Fuzzer {

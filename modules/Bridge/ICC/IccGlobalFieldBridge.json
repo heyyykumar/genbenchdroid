@@ -1,9 +1,12 @@
 {
     "type": "BRIDGE",
-    "imports": [],
+    "pattern": "OUT",
+    "imports": ["import android.content.Intent;"],
     "globals": [],
     "module": [
-        "§NextActivity$.§data$ = sensitiveData;"
+        "§NextActivity$.§data$ = sensitiveData_€;",
+        "Intent §intent$ = new Intent(MainActivity.this, §NextActivity$.class);",
+        "startActivity(§intent$);"
     ],
     "methods": [],
     "classes": [
@@ -16,7 +19,7 @@
         "\tprotected void onCreate(Bundle savedInstanceState) {",
         "\t\tsuper.onCreate(savedInstanceState);",
         "\t\tsetContentView(R.layout.activity);",
-        "\t\tString sensitiveData = §data$;",
+        "\t\tString sensitiveData_₹ = §data$;",
         "\t\t{{ module }}",
         "\t}",
         "",
@@ -26,7 +29,7 @@
     ],
     "permissions": [],
     "components": [
-        "    <activity android:name=\".§NextActivity$\">",
+        "    <activity android:name=\"com.generated.app.§NextActivity$\" >",
         "      <intent-filter>",
         "        <action android:name=\"android.intent.action.MAIN\"/>",
         "        <category android:name=\"android.intent.category.LAUNCHER\"/>",

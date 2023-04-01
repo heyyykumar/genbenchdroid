@@ -1,5 +1,6 @@
 {
     "type": "BRIDGE",
+    "pattern": "OUT",
     "imports": [
         "import java.util.LinkedList;"
     ],
@@ -7,12 +8,11 @@
         "{{ globals }}"
     ],
     "module": [
-        "LinkedList<String> §list$ = new LinkedList<String>();",
-        "§list$.add(sensitiveData);",
+        "LinkedList<String> §listc$ = new LinkedList<String>();",
+        "§listc$.add(sensitiveData_€);",
         "",
-        "LinkedList<String> §list2$ = (LinkedList<String>)§list$.clone();",
-        "sensitiveData = \"clear\";",
-        "sensitiveData = §list2$.get(0);",
+        "LinkedList<String> §list2c$ = (LinkedList<String>)§listc$.clone();",
+        "String sensitiveData_₹ = §list2c$.get(0);",
         "{{ module }}"
     ],
     "methods": [

@@ -1,0 +1,46 @@
+{
+    "type": "BRIDGE",
+    "pattern": "OUT",
+    "imports": [],
+    "globals": [
+        "public static String[] §arrayData$;",
+        "{{ globals }}",
+        "{{ globals }}"
+    ],
+    "module": [
+        "§arrayData$ = new String[3];",
+        "§arrayData$[0] = \"element 1 is tainted\";",
+        "§arrayData$[1] = sensitiveData_€;",
+        "§arrayData$[2] = \"neutral text\";",
+        "String sensitiveData_₹ = §arrayData$[2];",
+        "{{ module }}",
+        "{{ module }}"
+    ],
+    "methods": [
+        "{{ methods }}",
+        "{{ methods }}"
+    ],
+    "classes": [
+        "{{ classes }}",
+        "{{ classes }}"
+    ],
+    "permissions": [],
+    "components": [],
+    "views": [],
+    "flows": [
+        {
+            "className": "",
+            "methodSignature": "",
+            "statementSignature": "",
+            "leaking": false,
+	        "reachable": true
+        },
+        {
+            "className": "",
+            "methodSignature": "",
+            "statementSignature": "",
+            "leaking": true,
+            "reachable": true
+        }
+    ]
+}

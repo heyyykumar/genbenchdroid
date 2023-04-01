@@ -1,14 +1,14 @@
 {
     "type": "BRIDGE",
+    "pattern": "OUT",
     "imports": [],
     "globals": [
-        "{{ globals }}",
-        ""
+        "{{ globals }}"
+
     ],
     "module": [
-        "String §recData$ = sensitiveData;",
-        "sensitiveData = \"clear\";",
-        "sensitiveData = §rec$(100, §recData$);",
+        "String §recData$ = sensitiveData_€;",
+        "String sensitiveData_₹ = §rec$(100, §recData$);",
         "{{ module }}"
     ],
     "methods": [
@@ -19,12 +19,10 @@
         "    return §data$;",
         "  }",
         "}",
-        "{{ methods }}",
-        ""
+        "{{ methods }}"
     ],
     "classes": [
-        "{{ classes }}",
-        ""
+        "{{ classes }}"
     ],
     "permissions": [],
     "components": [],

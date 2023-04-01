@@ -16,7 +16,6 @@
         "",
         "  public void onStart() {",
         "    super.onStart();",
-        "    String sensitiveData = \"clear\";",
         "    {{ module }}",
         "  }",
         "",

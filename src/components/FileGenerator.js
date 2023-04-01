@@ -1,12 +1,11 @@
 const ConfigHandler = require('./ConfigHandler');
-const { cleanup, writeFileWithContent, copyFile, hashFile } = require('../helpers/FileHelper');
+const { cleanup, writeFileWithContent, copyFile, hashFile, _directoryExists } = require('../helpers/FileHelper');
 const { create } = require('xmlbuilder2');
 const { resolve } = require('path');
 
 class FileGenerator {
     manifestContent = '';
     layoutContent = '';
-    classesToGenerate = [];
     config = '';
 
     constructor (manifest, layout, classes, config) {
@@ -30,7 +29,7 @@ class FileGenerator {
         // generate AndroidManifest.xml
         writeFileWithContent(`${mainPath}/AndroidManifest.xml`, this.manifestContent);
 
-        // generate activitiy.xml layout file
+        // generate activity.xml layout file
         writeFileWithContent(`${mainPath}/res/layout/activity.xml`, this.layoutContent);
 
         // generate all necessary java files containing classes
@@ -39,20 +38,38 @@ class FileGenerator {
         });
     }
 
-    async finishCompilation(taintFlows, fullFlows, linenumberLookup, uncompiled = false, directOutput = false, cb = () => {}) {
+    async finishCompilation(taintFlows, fullFlows, linenumberLookup, uncompiled = false, directOutput = false, configFile, cb = () => {}) {
         const date = new Date();
         const outputDir = new ConfigHandler().get('outputDir');
-        const finalOutputDir = directOutput ? outputDir : `${outputDir}/${date.getFullYear()}_${date.getMonth()+1}_${date.getDate()}_${date.getTime()}`;
+
+        let finalOutputDir;
+
+        if(configFile) {
+            const filteredConfig=configFile.replace(/\//g, '-');
+            finalOutputDir=`${outputDir}/${filteredConfig}`;
+
+            // if the build exists with the same name, adds the time stamp to new build
+            if(_directoryExists(finalOutputDir)){
+                finalOutputDir=`${finalOutputDir}-${date.getFullYear()}_${date.getMonth()+1}_${date.getDate()}_${date.getTime()}`;
+            }
+
+        }
+        else
+            finalOutputDir = directOutput ? outputDir : `${outputDir}/${date.getFullYear()}_${date.getMonth()+1}_${date.getDate()}_${date.getTime()}`;
+
         let apkFileName = `${finalOutputDir}/generated-app.apk`;
 
         // copy compiled APK file to the specified output directory
-        if (!uncompiled) {
-            copyFile('generated/app/build/outputs/apk/debug/app-debug.apk', apkFileName);
-        } else {
-            // copy source code to output directory
-            copyFile('generated/app/src', `${finalOutputDir}/src`);
-            apkFileName = false;
-        }
+        if(!uncompiled){
+        copyFile('generated/app/build/outputs/apk/debug/app-debug.apk', apkFileName);}
+        else{apkFileName=false;}
+
+        // copy source code to output directory
+        copyFile('generated/app/src', `${finalOutputDir}/src`);
+        copyFile('generated/app/build.gradle',`${finalOutputDir}/build.gradle`);
+        copyFile('generated/app/proguard-rules.pro',`${finalOutputDir}/proguard-rules.pro`);
+
+
 
         // generate config description
         writeFileWithContent(`${finalOutputDir}/app-config.txt`, this.config);
@@ -108,8 +125,8 @@ class FileGenerator {
                 ]
             }
         }
-        
-        const flow = taintFlows.map(taintFlow => (
+
+        groundTruth.answer.flows.flow = taintFlows.map(taintFlow => (
             {
                 reference: [
                     {
@@ -150,12 +167,8 @@ class FileGenerator {
             }
         ));
 
-        groundTruth.answer.flows.flow = flow;
-
         const groundTruthDoc = create({ encoding: 'UTF-8', standalone: 'yes' }, groundTruth);
-        const groundTruthXml = groundTruthDoc.end({ prettyPrint: true });
-
-        return groundTruthXml;
+        return groundTruthDoc.end({prettyPrint: true});
     }
 
     _insertProject(statement, projectName, className) {
@@ -166,9 +179,7 @@ class FileGenerator {
         const colonIndex = statement.indexOf(':');
 
         const classNameInsertedStatement = `${statement.slice(0, colonIndex)}.${className}${statement.slice(colonIndex)}`;
-        const projectReplacedStatement = classNameInsertedStatement.replace(projectRegex, projectName);
-
-        return projectReplacedStatement;
+        return classNameInsertedStatement.replace(projectRegex, projectName);
     };
 
     log() {

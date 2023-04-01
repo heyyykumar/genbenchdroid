@@ -1,5 +1,6 @@
 {
     "type": "BRIDGE",
+    "pattern": "OUT",
     "imports": [
         "import android.os.AsyncTask;"
     ],
@@ -8,7 +9,7 @@
     ],
     "module": [
         "§CustomAsyncTask$ §async$ = new §CustomAsyncTask$(context);",
-        "§async$.execute(sensitiveData);"
+        "§async$.execute(sensitiveData_€);"
     ],
     "methods": [
         
@@ -21,7 +22,7 @@
         "    context = con;",
         "}",
         "  protected String doInBackground(String... §params$) {",
-        "    String sensitiveData = §params$[0];",
+        "    String sensitiveData_₹ = §params$[0];",
         "    {{ module }}",
         "    return \"Done\";",
         "  }",

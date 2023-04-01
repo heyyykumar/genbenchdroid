@@ -11,6 +11,17 @@ const initCliOptions = () => {
         .describe('c', 'Provide the benchmark case configuration')
         .example('$0 -c "BasicTemplate ImeiSource SmsSink"', 'Creates a simple benchmark case')
 
+        // --configuration-file, --config-file, --TMCF, --tmcf,  -cf
+        .usage('Usage: $0 -cf [string]')
+        .alias('cf', 'config-file',)
+        .alias('cf', 'configuration-file')
+        .alias('cf', 'TMCF')
+        .alias('cf', 'tmcf')
+        .alias('cf', 'cf')
+
+        .describe('cf', 'Provide the benchmark case configuration')
+        .example('$0 -cf "BasicTemplate ImeiSource SmsSink"', 'Creates a simple benchmark case')
+
         // --compile
         .usage('Usage: $0 --compile [boolean]')
         .describe('compile', 'Recompile the modified grammar')
@@ -77,7 +88,7 @@ const initCliOptions = () => {
         .alias('unobfuscated', 'u')
 
         // --directOutput, -d
-        .usage('Usage: $0 --directOutput [boolean]')
+        .usage('Usage: $0 --directOutput [string]')
         .describe('directOutput', 'Outputs the generated files directly in the output directory (Overwrittes previous with this option generated files)')
         .example('$0 --fuzz --directOutput', 'Generates an application and places all its files directly in the output directory')
         .alias('directOutput', 'd')

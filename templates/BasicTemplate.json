@@ -9,10 +9,10 @@
         "   private Context context = this;",
         "   {{ globals }}",
         "",
+        "   @Override",
         "   protected void onCreate(Bundle savedInstanceState) {",
         "       super.onCreate(savedInstanceState);",
         "       setContentView(R.layout.activity);",
-        "       String sensitiveData = \"clear\";",
         "       {{ module }}",
         "   }",
         "",
@@ -23,6 +23,7 @@
         "{{ classes }}"
     ],
     "manifest": [
+        "<?xml version=\"1.0\" encoding=\"utf-8\"?>",
         "<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\" package={{ project }}>",
         "  {{ permissions }}",
         "",
@@ -39,6 +40,7 @@
         "</manifest>"
     ],
     "layout": [
+        "<?xml version=\"1.0\" encoding=\"utf-8\"?>",
         "<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"",
             "xmlns:tools=\"http://schemas.android.com/tools\"",
             "android:layout_width=\"match_parent\"",

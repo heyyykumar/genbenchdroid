@@ -1,5 +1,6 @@
 {
     "type": "SINK",
+    "pattern": "IN",
     "imports": [
         "import android.telephony.SmsManager;"
     ],
@@ -7,7 +8,7 @@
         "{{ globals }}"
     ],
     "module": [
-        "int §val$ = Integer.valueOf(sensitiveData.substring(3,5));",
+        "int §val$ = Integer.valueOf(sensitiveData_€.substring(3,5));",
         "String[] §arr$ = new String[§val$];",
         "try {",
         "  §arr$[42] = \"Hello World\";",

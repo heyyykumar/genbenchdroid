@@ -1,13 +1,13 @@
 {
     "type": "BRIDGE",
+    "pattern": "OUT",
     "imports": [],
     "globals": [
         "{{ globals }}"
     ],
     "module": [
-        "String §result$ = §obfuscateData$(sensitiveData);",
-        "sensitiveData = \"clear\";",
-        "sensitiveData = §result$;",
+        "String §result$ = §obfuscateData$(sensitiveData_€);",
+        "String sensitiveData_₹ = §result$;",
         "{{ module }}"
     ],
     "methods": [

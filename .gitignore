@@ -7,3 +7,7 @@ generated/app/src/main/AndroidManifest.xml
 generated/app/src/main/res/layout/*
 .gradle
 output
+.idea
+package-lock.json
+npm-shrinkwrap.json
+grammar/grammar.js

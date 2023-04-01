@@ -1,0 +1,44 @@
+{
+    "type": "BRIDGE",
+    "pattern": "OUT",
+    "imports": [],
+    "globals": [
+        "{{ globals }}",
+        "{{ globals }}"
+    ],
+    "module": [
+        "String[] §array$ = new String[10];",
+        "§array$[5] = sensitiveData_€;",
+        "§array$[4] = \"unsensitive data\";",
+        "String sensitiveData_₹ = §array$[5];",
+        "{{ module }}",
+        "{{ module }}"
+    ],
+    "methods": [
+        "{{ methods }}",
+        "{{ methods }}"
+    ],
+    "classes": [
+        "{{ classes }}",
+        "{{ classes }}"
+    ],
+    "permissions": [],
+    "components": [],
+    "views": [],
+    "flows": [
+        {
+            "className": "",
+            "methodSignature": "",
+            "statementSignature": "",
+            "leaking": true,
+            "reachable": true
+        },
+        {
+            "className": "",
+            "methodSignature": "",
+            "statementSignature": "",
+            "leaking": true,
+            "reachable": true
+        }
+    ]
+}

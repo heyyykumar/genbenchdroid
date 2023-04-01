@@ -1,5 +1,6 @@
 {
     "type": "BRIDGE",
+    "pattern": "OUT",
     "imports": [
         "import android.content.Intent;"
     ],
@@ -8,7 +9,7 @@
     ],
     "module": [
         "Intent §i$ = new Intent(context, §NextActivity$.class);",
-        "§i$.putExtra(\"leak\", sensitiveData);",
+        "§i$.putExtra(\"leak\", sensitiveData_€);",
         "context.startActivity(§i$);"
     ],
     "methods": [
@@ -23,7 +24,7 @@
         "    super.onCreate(savedInstanceState);",
         "    setContentView(R.layout.activity);",
         "    Intent §i$ = getIntent();",
-        "    String sensitiveData = §i$.getStringExtra(\"leak\");",
+        "    String sensitiveData_₹ = §i$.getStringExtra(\"leak\");",
         "    {{ module }}",
         "  }",
         "{{ methods }}",

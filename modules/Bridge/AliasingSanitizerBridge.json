@@ -1,5 +1,6 @@
 {
     "type": "BRIDGE",
+    "pattern": "OUT",
     "imports": [],
     "globals": [
         "private §A$ §b$ = new §A$();",
@@ -7,8 +8,8 @@
     ],
     "module": [
         "§A$ §a$ = new §A$();",
-        "§a$.§b$ = sensitiveData;",
-        "sensitiveData = §b$.§b$;",
+        "§a$.§b$ = sensitiveData_€;",
+        "String sensitiveData_₹ = §b$.§b$;",
         "{{ module }}",
         "§b$ = §a$;"
     ],

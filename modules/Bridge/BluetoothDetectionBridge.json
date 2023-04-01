@@ -1,5 +1,6 @@
 {
     "type": "BRIDGE",
+    "pattern": "OUT",
     "imports": [
         "import android.bluetooth.BluetoothAdapter;"
     ],
@@ -7,14 +8,14 @@
         "{{ globals }}"
     ],
     "module": [
-        "String §tempSensitive$ = sensitiveData;",
-        "sensitiveData = \"clear\";",
+        "String §tempSensitive$ = sensitiveData_€;",
+        "String sensitiveData_₹ = \"clear\";",
         "String §status$ = \"Can't Detect\";",
         "BluetoothAdapter §ba$ = BluetoothAdapter.getDefaultAdapter();",
         "if (§ba$ == null) {",
-        "  §status$ = \"\\tBluetooth Adapter\";",
+        "  §status$ = \"Bluetooth Adapter\";",
         "} else {",
-        "  sensitiveData = §tempSensitive$;",
+        "  sensitiveData_₹ = §tempSensitive$;",
         "}",
         "{{ module }}",
         "",

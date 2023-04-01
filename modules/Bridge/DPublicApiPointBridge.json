@@ -1,0 +1,46 @@
+{
+    "type": "BRIDGE",
+    "pattern": "OUT",
+    "imports": [
+        "import android.graphics.PointF;"
+    ],
+    "globals": [
+        "{{ globals }}",
+        "{{ globals }}"
+    ],
+    "module": [
+        "float §fx$ = Float.valueOf(sensitiveData_€.substring(0, 8));",
+        "float §fy$ = Float.valueOf(sensitiveData_€.substring(8));",
+        "PointF §point$ = new PointF(§fx$, §fy$);",
+        "String sensitiveData_₹ = §point$.x + \"\" + §point$.y;",
+        "{{ module }}",
+        "{{ module }}"
+    ],
+    "methods": [
+        "{{ methods }}",
+        "{{ methods }}"
+    ],
+    "classes": [
+        "{{ classes }}",
+        "{{ classes }}"
+    ],
+    "permissions": [],
+    "components": [],
+    "views": [],
+    "flows": [
+        {
+            "className": "",
+            "methodSignature": "",
+            "statementSignature": "",
+            "leaking": true,
+	        "reachable": true
+        },
+        {
+            "className": "",
+            "methodSignature": "",
+            "statementSignature": "",
+            "leaking": true,
+            "reachable": true
+        }
+    ]
+}

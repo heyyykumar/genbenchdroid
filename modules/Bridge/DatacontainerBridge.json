@@ -1,5 +1,6 @@
 {
     "type": "BRIDGE",
+    "pattern": "OUT",
     "imports": [],
     "globals": [
         "{{ globals }}"
@@ -7,9 +8,8 @@
     "module": [
         "§Datacontainer$ §d1$ = new §Datacontainer$();",
         "§d1$.setDescription(\"abc\");",
-        "§d1$.setSecret(sensitiveData);",
-        "sensitiveData = \"clear\";",
-        "sensitiveData = §d1$.getDescription();",
+        "§d1$.setSecret(sensitiveData_€);",
+        "Status sensitiveData_₹ = §d1$.getDescription();",
         "{{ module }}"
     ],
     "methods": [
