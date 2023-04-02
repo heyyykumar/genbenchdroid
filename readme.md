@@ -62,6 +62,15 @@ The following command can be used to generate a benchmark case:
 ```
 node app --config <TMC>
 ```
+or to load <TMC> from a configuration file:
+
+```
+node app --config-file "path/from/repos/directory"
+```
+
+```diff
+! Note: The configuration template and rules remain unchanged for Configuration file.`
+```
 
 \<TMC> is a placeholder that has to be replaced by the desired template + modules configuration.
 
@@ -78,6 +87,11 @@ The template has to be the first token inside the provided configuration.
 Example configuration 2:
 ```
 node app --config "BasicTemplate RandomIfElseBridge ( ArrayBridge ) ( SmsSink )"
+```
+
+Example configuration 3:
+```
+node app --config-file "appconfig/onlyReflection/sources-10-sinks-100"
 ```
 
 This example contains a branch inside the generated benchmark case.
